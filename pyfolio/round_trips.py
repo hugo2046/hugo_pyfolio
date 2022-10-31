@@ -369,7 +369,7 @@ def gen_round_trip_stats(round_trips):
     stats['returns'] = agg_all_long_short(round_trips, 'returns', RETURN_STATS)
 
     stats['symbols'] = \
-        round_trips.groupby('symbol')['returns'].agg(RETURN_STATS).T
+        round_trips.groupby('symbol')['returns'].agg(**RETURN_STATS).T
 
     return stats
 
