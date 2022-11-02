@@ -76,7 +76,7 @@ DURATION_STATS = OrderedDict([
 
 def agg_all_long_short(round_trips, col, stats_dict):
     stats_all = (round_trips.assign(ones=1).groupby('ones')[col].agg(
-        **stats_dict).T.rename_axis(columns={1.0: 'All trades'}))
+        **stats_dict).T.rename(columns={1: 'All trades'}))
     stats_long_short = (round_trips.groupby('long')[col].agg(
         **stats_dict).T.rename(columns={
             False: 'Short trades',
